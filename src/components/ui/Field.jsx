@@ -1,4 +1,4 @@
-export function Field({ label, type = 'text' }) {
+﻿export function Field({ label, type = 'text' }) {
   return (
     <label className="block">
       <span className="text-sm font-black text-elkana-ink">{label}</span>

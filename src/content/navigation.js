@@ -1,9 +1,10 @@
 export const navItems = [
   { label: 'Beranda', path: '/' },
   { label: 'Tentang', path: '/tentang' },
-  { label: 'Akademik', path: '/akademik' },
-  { label: 'PPDB', path: '/ppdb' },
+  { label: 'TK', path: '/unit/tk' },
+  { label: 'SD', path: '/unit/sd' },
+  { label: 'SMP', path: '/unit/smp' },
   { label: 'Berita', path: '/berita' },
-  { label: 'Galeri', path: '/galeri' },
+  { label: 'PPDB', path: '/ppdb' },
   { label: 'Kontak', path: '/kontak' },
 ]

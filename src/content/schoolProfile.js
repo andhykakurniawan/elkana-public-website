@@ -25,7 +25,6 @@ export const homeHero = {
 }
 
 export const stats = [
-  { value: '3', label: 'unit pendidikan' },
   { value: 'TK', label: 'fondasi usia dini' },
   { value: 'SD', label: 'dasar akademik dan karakter' },
   { value: 'SMP', label: 'mandiri dan siap melangkah' },

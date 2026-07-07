@@ -1,4 +1,4 @@
-export function PageHero({ title, text, icon }) {
+﻿export function PageHero({ title, text, icon }) {
   return (
     <section className="bg-elkana-ink px-5 py-20 text-white sm:px-8 lg:px-12">
       <div className="container-wide">

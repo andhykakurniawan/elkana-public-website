@@ -1,4 +1,4 @@
-import { ArrowRight } from 'lucide-react'
+﻿import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { Shell } from '../components/layout/Shell'
 import { Seo } from '../components/ui/Seo'
@@ -7,7 +7,7 @@ export function NotFoundPage() {
   return (
     <Shell>
       <Seo title="Halaman Tidak Ditemukan" />
-      <section className="section-pad bg-[#fffcf4]">
+      <section className="section-pad bg-[#f8f1e3]">
         <div className="container-wide text-center">
           <h1 className="text-4xl font-black text-elkana-ink">404</h1>
           <p className="mt-3 text-slate-600">Halaman tidak ditemukan.</p>

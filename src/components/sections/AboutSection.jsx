@@ -1,4 +1,4 @@
-import { ArrowRight } from 'lucide-react'
+﻿import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { profileIntro, values } from '../../content'
 
@@ -13,17 +13,16 @@ export function AboutSection({ compact = false }) {
           </h2>
           <p className="mt-5 text-base leading-8 text-slate-700">{profileIntro.description}</p>
           {compact && (
-            <Link to="/tentang" className="mt-7 inline-flex items-center gap-2 font-black text-elkana-pine">
+            <Link to="/tentang" className="mt-7 inline-flex items-center gap-2 rounded-md border border-elkana-gold/35 bg-[#fbf7ee] px-5 py-3 font-black text-elkana-pine shadow-sm transition hover:border-elkana-gold">
               Baca selengkapnya <ArrowRight size={17} />
             </Link>
           )}
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
           {values.map((value, index) => (
-            <div key={value} className="rounded-lg bg-white p-5 shadow-sm">
-              <div className="mb-5 grid h-11 w-11 place-items-center rounded-md bg-elkana-pine text-white">
-                {index + 1}
-              </div>
+            <div key={value} className="rounded-lg border border-elkana-gold/20 bg-[#fbf7ee] p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-soft">
+              <div className="mb-5 h-1.5 w-14 rounded-full bg-elkana-gold" />
+              <p className="text-sm font-black text-elkana-pine">0{index + 1}</p>
               <p className="font-black text-elkana-ink">{value}</p>
             </div>
           ))}

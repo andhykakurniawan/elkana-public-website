@@ -9,3 +9,8 @@ export const programs = educationUnits.map(({ level, title, text }) => ({
   title,
   text,
 }))
+
+export const unitsById = educationUnits.reduce((units, unit) => {
+  units[unit.id] = unit
+  return units
+}, {})

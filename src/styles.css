@@ -1,10 +1,10 @@
-@tailwind base;
+﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
   color: #071832;
-  background: #fffcf4;
+  background: #f8f1e3;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -18,8 +18,13 @@ html {
 body {
   min-width: 320px;
   margin: 0;
-  background: #fffcf4;
+  background: #f8f1e3;
   font-family: Inter, ui-sans-serif, system-ui, Segoe UI, Arial, sans-serif;
+}
+
+::selection {
+  color: #071832;
+  background: #b8922d;
 }
 
 h1,
@@ -46,11 +51,18 @@ img {
 }
 
 .eyebrow {
-  color: #123b6d;
+  color: #0e315c;
   font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+}
+
+.surface-panel {
+  border: 1px solid rgba(184, 146, 45, 0.24);
+  background: rgba(248, 241, 227, 0.9);
+  box-shadow: 0 18px 50px rgba(7, 24, 50, 0.1);
+  backdrop-filter: blur(14px);
 }
 
 .focus-ring {
@@ -58,7 +70,7 @@ img {
 }
 
 .focus-ring:focus-visible {
-  outline: 2px solid #d4af37;
+  outline: 2px solid #b8922d;
   outline-offset: 4px;
 }
 

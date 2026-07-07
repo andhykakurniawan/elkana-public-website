@@ -1,4 +1,4 @@
-import { BookOpen } from 'lucide-react'
+﻿import { BookOpen } from 'lucide-react'
 import { Shell } from '../components/layout/Shell'
 import { ProgramsSection } from '../components/sections/ProgramsSection'
 import { InfoBlock } from '../components/ui/InfoBlock'

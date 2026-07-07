@@ -6,11 +6,11 @@ export default {
       colors: {
         elkana: {
           ink: '#071832',
-          pine: '#123B6D',
-          leaf: '#C9A227',
-          gold: '#D4AF37',
-          sky: '#2F6DAE',
-          mist: '#FFF4D8',
+          pine: '#0E315C',
+          leaf: '#9A7A24',
+          gold: '#B8922D',
+          sky: '#285C91',
+          mist: '#F4EBD8',
         },
       },
       fontFamily: {
@@ -18,7 +18,8 @@ export default {
         heading: ['Work Sans', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        soft: '0 18px 50px rgba(7, 24, 50, 0.14)',
+        soft: '0 18px 50px rgba(7, 24, 50, 0.12)',
+        glow: '0 22px 70px rgba(184, 146, 45, 0.14)',
       },
     },
   },

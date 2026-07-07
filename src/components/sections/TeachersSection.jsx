@@ -1,4 +1,4 @@
-import { teachers } from '../../content'
+﻿import { teachers } from '../../content'
 
 export function TeachersSection() {
   return (

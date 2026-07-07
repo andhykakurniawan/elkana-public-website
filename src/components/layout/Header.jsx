@@ -1,40 +1,81 @@
-import { useState } from 'react'
-import { ArrowRight, Menu, X } from 'lucide-react'
+﻿import { useState } from 'react'
+import { ChevronDown, Menu, Users, X } from 'lucide-react'
 import { Link, NavLink } from 'react-router-dom'
-import { navItems, school } from '../../content'
+import { educationUnits, school } from '../../content'
+
+const mainLinks = [
+  { label: 'Beranda', path: '/' },
+  { label: 'Tentang', path: '/tentang' },
+  { label: 'Berita', path: '/berita' },
+  { label: 'PPDB', path: '/ppdb' },
+  { label: 'Kontak', path: '/kontak' },
+]
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
+  const [unitOpen, setUnitOpen] = useState(false)
 
-  const closeMenu = () => setIsOpen(false)
+  const closeMenu = () => {
+    setIsOpen(false)
+    setUnitOpen(false)
+  }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-elkana-gold/25 bg-elkana-ink/95 text-white backdrop-blur">
-      <div className="container-wide flex h-20 items-center justify-between px-5 sm:px-8 lg:px-12">
+    <header className="sticky top-0 z-50 border-b border-purple-100 bg-white/92 text-slate-800 shadow-sm backdrop-blur-xl">
+      <div className="container-wide flex h-[4.8rem] items-center justify-between px-5 sm:px-8 lg:px-12">
         <Link to="/" className="focus-ring flex items-center gap-3 rounded-md" onClick={closeMenu}>
-          <span className="grid h-11 w-11 place-items-center rounded-lg bg-elkana-pine text-lg font-black text-white">E</span>
+          <img src="/images/logo-elkana.png" alt={school.name} className="h-12 w-12 object-contain" />
           <span>
-            <span className="block text-base font-black leading-tight text-white">{school.name}</span>
-            <span className="block text-xs font-semibold text-elkana-gold">Sekolah Kristen Terpadu</span>
+            <span className="block font-heading text-2xl font-black leading-none tracking-normal text-purple-950">YPK ELKANA</span>
+            <span className="block text-xs font-semibold text-slate-500">Yayasan Pendidikan Kristen</span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Navigasi utama">
-          {navItems.map((item) => (
-            <NavItem key={item.path} item={item} />
-          ))}
+        <nav className="hidden items-center gap-8 text-sm font-bold lg:flex" aria-label="Navigasi utama">
+          <DesktopLink to="/">Beranda</DesktopLink>
+          <DesktopLink to="/tentang">Tentang</DesktopLink>
+
+          <div className="relative" onMouseEnter={() => setUnitOpen(true)} onMouseLeave={() => setUnitOpen(false)}>
+            <button
+              type="button"
+              className="focus-ring inline-flex items-center gap-1 rounded-md py-3 text-slate-700 transition hover:text-purple-800"
+              onClick={() => setUnitOpen((value) => !value)}
+            >
+              Unit Pendidikan <ChevronDown size={16} />
+            </button>
+            {unitOpen && (
+              <div className="absolute left-0 top-full w-64 pt-2">
+                <div className="rounded-xl border border-purple-100 bg-white p-2 shadow-soft">
+                  {educationUnits.map((unit) => (
+                    <Link
+                      key={unit.id}
+                      to={unit.route}
+                      onClick={closeMenu}
+                      className="block rounded-lg px-4 py-3 text-sm font-black text-purple-950 transition hover:bg-purple-50"
+                    >
+                      {unit.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          <DesktopLink to="/berita">Berita</DesktopLink>
+          <DesktopLink to="/ppdb">PPDB</DesktopLink>
+          <DesktopLink to="/kontak">Kontak</DesktopLink>
         </nav>
 
         <Link
           to="/ppdb"
-          className="focus-ring hidden items-center gap-2 rounded-md bg-elkana-gold px-4 py-2.5 text-sm font-black text-elkana-ink shadow-sm transition hover:bg-[#e7c95a] lg:inline-flex"
+          className="focus-ring hidden items-center gap-2 rounded-lg bg-gradient-to-r from-purple-900 to-violet-700 px-6 py-3 text-sm font-black text-white shadow-lg shadow-purple-200/60 transition hover:-translate-y-0.5 lg:inline-flex"
         >
-          Daftar PPDB <ArrowRight size={16} />
+          <Users size={17} /> Daftar PPDB
         </Link>
 
         <button
           type="button"
-          className="focus-ring grid h-11 w-11 place-items-center rounded-md border border-elkana-gold/30 text-white lg:hidden"
+          className="focus-ring grid h-11 w-11 place-items-center rounded-lg border border-purple-100 text-purple-900 lg:hidden"
           aria-label="Buka navigasi"
           onClick={() => setIsOpen((value) => !value)}
         >
@@ -43,11 +84,17 @@ export function Header() {
       </div>
 
       {isOpen && (
-        <div className="border-t border-elkana-gold/25 bg-elkana-ink px-5 py-4 shadow-soft lg:hidden">
+        <div className="border-t border-purple-100 bg-white px-5 py-4 shadow-soft lg:hidden">
           <nav className="grid gap-2" aria-label="Navigasi mobile">
-            {navItems.map((item) => (
-              <NavItem key={item.path} item={item} onClick={closeMenu} mobile />
+            {mainLinks.map((item) => (
+              <MobileLink key={item.path} to={item.path} onClick={closeMenu}>{item.label}</MobileLink>
             ))}
+            <div className="my-2 border-t border-purple-100 pt-3">
+              <p className="px-4 text-xs font-black uppercase tracking-[0.16em] text-purple-400">Unit Pendidikan</p>
+              {educationUnits.map((unit) => (
+                <MobileLink key={unit.id} to={unit.route} onClick={closeMenu}>{unit.name}</MobileLink>
+              ))}
+            </div>
           </nav>
         </div>
       )}
@@ -55,20 +102,30 @@ export function Header() {
   )
 }
 
-function NavItem({ item, mobile = false, onClick }) {
+function DesktopLink({ to, children }) {
   return (
     <NavLink
-      to={item.path}
-      onClick={onClick}
+      to={to}
       className={({ isActive }) =>
-        mobile
-          ? `rounded-md px-4 py-3 text-sm font-bold ${isActive ? 'bg-elkana-gold text-elkana-ink' : 'text-white'}`
-          : `focus-ring rounded-md px-3 py-2 text-sm font-bold transition ${
-              isActive ? 'bg-elkana-gold text-elkana-ink' : 'text-white hover:bg-white/10'
-            }`
+        `focus-ring rounded-md py-2 transition ${isActive ? 'text-purple-900 underline decoration-purple-700 decoration-2 underline-offset-[14px]' : 'text-slate-700 hover:text-purple-800'}`
       }
     >
-      {item.label}
+      {children}
     </NavLink>
   )
 }
+
+function MobileLink({ to, onClick, children }) {
+  return (
+    <NavLink
+      to={to}
+      onClick={onClick}
+      className={({ isActive }) =>
+        `rounded-lg px-4 py-3 text-sm font-black ${isActive ? 'bg-purple-50 text-purple-900' : 'text-slate-700'}`
+      }
+    >
+      {children}
+    </NavLink>
+  )
+}
+
