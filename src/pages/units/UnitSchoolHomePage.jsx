@@ -175,28 +175,22 @@ function Navbar({ config }) {
 
 function Hero({ config }) {
   return (
-    <section id="beranda" className="relative overflow-hidden bg-white">
+    <section id="beranda" className="relative min-h-[610px] overflow-hidden bg-white">
+      <img src={config.unit.heroImage} alt={config.unit.name} className="absolute inset-0 h-full w-full object-cover object-center" />
+      <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/5" />
+      <div className="absolute inset-y-0 left-0 w-1/2 bg-white/35 blur-3xl" />
       <HeroDecor />
-      <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-5 py-12 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
-        <div className="relative z-10">
+      <div className="relative mx-auto flex min-h-[610px] max-w-7xl items-center px-5 py-12 lg:px-8">
+        <div className="relative z-10 max-w-2xl">
           <p className="mb-3 text-sm font-black uppercase tracking-wider text-amber-500">{config.label}</p>
-          <h2 className="max-w-2xl text-4xl font-black leading-tight text-[#2e1d42] md:text-5xl lg:text-6xl">{config.title}</h2>
+          <h2 className="text-4xl font-black leading-tight text-[#2e1d42] md:text-5xl lg:text-[3.35rem]">{config.title}</h2>
           <p className="mt-5 max-w-xl text-base font-medium leading-7 text-slate-600">{config.desc}</p>
           <div className="mt-8 flex flex-wrap gap-4">
             <a href="#profil" className="inline-flex items-center gap-3 rounded-xl bg-purple-800 px-7 py-3 text-sm font-black text-white shadow-xl shadow-purple-300/40">Kenal Lebih Dekat <ArrowRight size={18} /></a>
             <Link to="/ppdb" className="inline-flex items-center gap-3 rounded-xl border-2 border-purple-600 bg-white px-7 py-3 text-sm font-black text-purple-800">Daftar PPDB <Users size={18} /></Link>
           </div>
         </div>
-        <div className="relative z-10">
-          <div className="absolute inset-x-8 bottom-4 h-44 rounded-full bg-purple-200/70 blur-3xl" />
-          <div className="relative overflow-hidden rounded-[3rem] bg-gradient-to-br from-purple-100 via-white to-violet-100 p-3 shadow-2xl shadow-purple-100">
-            <img src={config.unit.heroImage} alt={config.unit.name} className="h-[380px] w-full rounded-[2.4rem] object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-transparent to-purple-700/10" />
-          </div>
-        </div>
       </div>
-      <div className="absolute bottom-0 left-0 h-20 w-1/2 rounded-tr-[100%] bg-purple-100/70" />
-      <div className="absolute bottom-0 right-0 h-24 w-1/2 rounded-tl-[100%] bg-violet-100/80" />
     </section>
   )
 }

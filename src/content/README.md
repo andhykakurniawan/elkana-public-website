@@ -16,6 +16,15 @@ Folder ini khusus untuk data yang aman diedit pihak sekolah. Jangan edit folder 
 - `units/smp.js`: konten khusus SMP Kristen Elkana.
 - `teachers/teachers.js`: data guru dan staf.
 
+## Hero Images
+
+File hero utama disimpan di `public/images/hero`.
+
+- `yayasan-hero.png`: hero beranda yayasan.
+- `tk-hero.png`: hero TK Kristen Elkana.
+- `sd-hero.png`: hero SD Kristen Elkana.
+- `smp-hero.png`: hero SMP Kristen Elkana.
+
 ## Cara Edit Yang Aman
 
 - Ubah teks di dalam tanda kutip saja.

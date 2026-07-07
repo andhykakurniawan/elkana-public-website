@@ -10,7 +10,7 @@ export const school = {
 }
 
 export const homeHero = {
-  image: 'https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1800&q=85',
+  image: '/images/hero/yayasan-hero.png',
   eyebrow: school.fullName,
   title: school.name,
   description: school.tagline,

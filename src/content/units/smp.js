@@ -8,7 +8,7 @@ export const smpUnit = {
   route: '/unit/smp',
   newsRoute: '/berita/smp',
   variant: 'bold',
-  heroImage: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=85',
+  heroImage: '/images/hero/smp-hero.png',
   intro:
     'SMP Kristen Elkana mendampingi remaja bertumbuh mandiri, kritis, berkarakter, dan siap menghadapi jenjang berikutnya.',
   highlights: ['Sains dan bahasa', 'Teknologi', 'Kepemimpinan', 'Konseling siswa'],

@@ -21,6 +21,7 @@ import {
 } from 'lucide-react'
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import { AnthemSection } from '../../components/templates/AnthemSection'
 import { Seo } from '../../components/ui/Seo'
 import { educationUnits, gallery, homeHero, news, school } from '../../content'
 
@@ -68,6 +69,7 @@ export function HomePage() {
       <EducationUnits />
       <ValuesAndNews />
       <GalleryAndTestimonial />
+      <AnthemSection />
       <PPDBBanner />
       <HomeFooter />
     </main>
@@ -142,17 +144,15 @@ const idleNavClass = 'hover:text-purple-700'
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-white">
-      <div className="absolute right-0 top-0 h-full w-1/2 bg-gradient-to-bl from-purple-100 via-violet-50 to-transparent" />
-      <div className="absolute right-0 top-0 hidden h-full w-[45%] opacity-80 lg:block">
-        <img src={homeHero.image} alt="Gerbang YPK Elkana" className="h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/40 to-purple-700/20" />
-      </div>
+    <section className="relative min-h-[620px] overflow-hidden bg-white">
+      <img src={homeHero.image} alt="Gerbang YPK Elkana" className="absolute inset-0 h-full w-full object-cover object-center" />
+      <div className="absolute inset-0 bg-gradient-to-r from-white via-white/88 to-white/10" />
+      <div className="absolute inset-y-0 left-0 w-1/2 bg-white/35 blur-3xl" />
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 py-14 lg:grid-cols-[0.95fr_1.05fr] lg:px-8 lg:py-16">
-        <div className="z-10">
+      <div className="relative mx-auto flex min-h-[620px] max-w-7xl items-center px-5 py-14 lg:px-8">
+        <div className="z-10 max-w-2xl">
           <p className="mb-3 text-sm font-black uppercase tracking-wide text-amber-500">{school.fullName}</p>
-          <h2 className="max-w-xl text-4xl font-black leading-tight text-purple-950 md:text-5xl lg:text-6xl">
+          <h2 className="text-4xl font-black leading-tight text-purple-950 md:text-5xl lg:text-[3.45rem]">
             Membangun Generasi <span className="text-purple-600">Beriman, Berilmu,</span> dan Berkarakter
           </h2>
           <p className="mt-5 max-w-xl text-base leading-7 text-slate-600">
@@ -174,27 +174,7 @@ function Hero() {
             <MiniStat icon={Heart} label="Melayani dengan Kasih & Integritas" />
           </div>
         </div>
-
-        <div className="relative z-10 min-h-[360px]">
-          <div className="absolute left-4 top-6 hidden h-40 w-40 rounded-full bg-purple-200/60 blur-3xl lg:block" />
-          <div className="absolute right-10 top-8 hidden grid-cols-6 gap-2 opacity-50 lg:grid">
-            {Array.from({ length: 36 }).map((_, index) => (
-              <span key={index} className="h-1.5 w-1.5 rounded-full bg-amber-400" />
-            ))}
-          </div>
-
-          <div className="relative ml-auto flex max-w-2xl items-end justify-center pt-8">
-            <div className="absolute left-4 top-28 rounded-xl bg-amber-400 px-5 py-2 text-lg font-black text-white shadow-lg">TK</div>
-            <div className="absolute left-[44%] top-8 rounded-xl bg-purple-600 px-5 py-2 text-lg font-black text-white shadow-lg">SD</div>
-            <div className="absolute right-3 top-44 rounded-xl bg-violet-700 px-5 py-2 text-lg font-black text-white shadow-lg">SMP</div>
-            <div className="h-[380px] w-[380px] overflow-hidden rounded-full bg-gradient-to-br from-purple-300 to-purple-100 shadow-2xl shadow-purple-300/40 md:h-[450px] md:w-[450px]">
-              <img src={gallery[1]?.src || homeHero.image} alt="Siswa YPK Elkana" className="h-full w-full object-cover object-center opacity-95" />
-            </div>
-          </div>
-        </div>
       </div>
-
-      <div className="absolute bottom-0 right-0 h-24 w-2/3 rounded-tl-[100%] bg-purple-100/50" />
     </section>
   )
 }

@@ -144,16 +144,19 @@ function Navbar() {
 
 function Hero() {
   return (
-    <section id="beranda" className="relative bg-white">
+    <section id="beranda" className="relative min-h-[610px] overflow-hidden bg-white">
+      <img src={tk.heroImage} alt="Anak-anak TK Kristen Elkana belajar sambil bermain" className="absolute inset-0 h-full w-full object-cover object-center" />
+      <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/5" />
+      <div className="absolute inset-y-0 left-0 w-1/2 bg-white/35 blur-3xl" />
       <Decorations />
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-5 pb-20 pt-10 lg:grid-cols-[0.9fr_1.1fr] lg:px-8 lg:pb-24 lg:pt-12">
-        <div className="relative z-10">
+      <div className="relative mx-auto flex min-h-[610px] max-w-7xl items-center px-5 py-12 lg:px-8">
+        <div className="relative z-10 max-w-2xl">
           <div className="mb-3 inline-flex items-center gap-2 rounded-xl bg-purple-700 px-5 py-2 text-xl font-black text-white shadow-lg shadow-purple-200">
             TK
           </div>
 
-          <h2 className="max-w-xl text-4xl font-black leading-tight text-[#31203f] md:text-5xl lg:text-6xl">
+          <h2 className="text-4xl font-black leading-tight text-[#31203f] md:text-5xl lg:text-[3.35rem]">
             Tumbuh Gembira, <span className="text-purple-600">Belajar Bermakna,</span> Berkarakter Kristiani
           </h2>
 
@@ -170,23 +173,7 @@ function Hero() {
             </Link>
           </div>
         </div>
-
-        <div className="relative z-10 min-h-[360px]">
-          <div className="absolute inset-x-0 bottom-0 h-48 rounded-[3rem] bg-purple-100/70 blur-2xl" />
-          <div className="relative mx-auto max-w-3xl overflow-hidden rounded-[3rem] bg-gradient-to-br from-purple-100 via-white to-yellow-50 p-3 shadow-2xl shadow-purple-100">
-            <img src={tk.heroImage} alt="Anak-anak TK Kristen Elkana belajar sambil bermain" className="h-[390px] w-full rounded-[2.5rem] object-cover" />
-            <div className="absolute right-8 top-8 rotate-6 rounded-[2rem] bg-white px-5 py-4 text-center shadow-xl">
-              <p className="text-sm font-black text-purple-700">Tempat kecil<br />untuk mimpi<br />besar anak!</p>
-            </div>
-            <div className="absolute bottom-6 right-6 hidden rounded-3xl bg-white/90 p-4 shadow-xl md:block">
-              <ChurchIllustration />
-            </div>
-          </div>
-        </div>
       </div>
-
-      <div className="absolute bottom-0 left-0 h-20 w-1/2 rounded-tr-[100%] bg-purple-100/70" />
-      <div className="absolute bottom-0 right-0 h-24 w-1/2 rounded-tl-[100%] bg-green-100/70" />
     </section>
   )
 }

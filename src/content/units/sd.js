@@ -8,7 +8,7 @@ export const sdUnit = {
   route: '/unit/sd',
   newsRoute: '/berita/sd',
   variant: 'classic',
-  heroImage: 'https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1600&q=85',
+  heroImage: '/images/hero/sd-hero.png',
   intro:
     'SD Kristen Elkana membangun dasar akademik, karakter, dan iman melalui pembelajaran yang terstruktur dan aktif.',
   highlights: ['Literasi', 'Numerasi', 'Proyek kelas', 'Pembinaan karakter'],

@@ -8,7 +8,7 @@ export const tkUnit = {
   route: '/unit/tk',
   newsRoute: '/berita/tk',
   variant: 'soft',
-  heroImage: 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=1600&q=85',
+  heroImage: '/images/hero/tk-hero.png',
   intro:
     'TK Kristen Elkana menyiapkan ruang belajar awal yang aman, penuh perhatian, dan menyenangkan untuk anak usia dini.',
   highlights: ['Belajar sambil bermain', 'Motorik dan bahasa', 'Sosial emosional', 'Pembiasaan iman'],
