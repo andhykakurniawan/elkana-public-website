@@ -1,7 +1,7 @@
-﻿import { ArrowRight, Clock, Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
-import { Shell } from '../components/layout/Shell'
-import { Seo } from '../components/ui/Seo'
-import { school } from '../content'
+import { ArrowRight, Clock, Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
+import { Shell } from '../../components/layout/Shell'
+import { Seo } from '../../components/ui/Seo'
+import { school } from '../../content'
 
 const contacts = [
   { title: 'Alamat', text: school.address, icon: MapPin },

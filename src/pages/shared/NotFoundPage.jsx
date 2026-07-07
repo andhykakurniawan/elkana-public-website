@@ -1,7 +1,7 @@
-﻿import { ArrowRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { Shell } from '../components/layout/Shell'
-import { Seo } from '../components/ui/Seo'
+import { Shell } from '../../components/layout/Shell'
+import { Seo } from '../../components/ui/Seo'
 
 export function NotFoundPage() {
   return (

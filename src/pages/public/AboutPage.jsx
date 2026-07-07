@@ -1,7 +1,7 @@
-﻿import { BookOpen, CheckCircle2, Cross, Heart, Sparkles, Users } from 'lucide-react'
-import { Shell } from '../components/layout/Shell'
-import { Seo } from '../components/ui/Seo'
-import { educationUnits, profileIntro, teachers, values, visionMission } from '../content'
+import { BookOpen, CheckCircle2, Cross, Heart, Sparkles, Users } from 'lucide-react'
+import { Shell } from '../../components/layout/Shell'
+import { Seo } from '../../components/ui/Seo'
+import { educationUnits, profileIntro, teachers, values, visionMission } from '../../content'
 
 const icons = [Cross, BookOpen, Heart]
 

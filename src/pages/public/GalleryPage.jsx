@@ -1,8 +1,8 @@
-﻿import { Sparkles } from 'lucide-react'
-import { Shell } from '../components/layout/Shell'
-import { PageHero } from '../components/ui/PageHero'
-import { Seo } from '../components/ui/Seo'
-import { gallery } from '../content'
+import { Sparkles } from 'lucide-react'
+import { Shell } from '../../components/layout/Shell'
+import { PageHero } from '../../components/ui/PageHero'
+import { Seo } from '../../components/ui/Seo'
+import { gallery } from '../../content'
 
 export function GalleryPage() {
   return (

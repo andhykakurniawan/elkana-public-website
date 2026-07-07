@@ -21,8 +21,8 @@ import {
   Users,
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { Seo } from '../components/ui/Seo'
-import { gallery, news, school, unitsById } from '../content'
+import { Seo } from '../../components/ui/Seo'
+import { gallery, news, school, unitsById } from '../../content'
 
 const tk = unitsById.tk
 

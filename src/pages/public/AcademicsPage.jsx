@@ -1,9 +1,9 @@
-﻿import { BookOpen } from 'lucide-react'
-import { Shell } from '../components/layout/Shell'
-import { ProgramsSection } from '../components/sections/ProgramsSection'
-import { InfoBlock } from '../components/ui/InfoBlock'
-import { PageHero } from '../components/ui/PageHero'
-import { Seo } from '../components/ui/Seo'
+import { BookOpen } from 'lucide-react'
+import { Shell } from '../../components/layout/Shell'
+import { ProgramsSection } from '../../components/templates/ProgramsSection'
+import { InfoBlock } from '../../components/ui/InfoBlock'
+import { PageHero } from '../../components/ui/PageHero'
+import { Seo } from '../../components/ui/Seo'
 
 const academicHighlights = ['Pembelajaran proyek', 'Pembinaan rohani', 'Ekstrakurikuler']
 

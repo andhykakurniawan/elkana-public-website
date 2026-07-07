@@ -1,9 +1,9 @@
 import { ArrowRight, BookOpen, Building2, CheckCircle2 } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { Shell } from '../components/layout/Shell'
-import { NewsSection } from '../components/sections/NewsSection'
-import { Seo } from '../components/ui/Seo'
-import { news } from '../content'
+import { Shell } from '../../components/layout/Shell'
+import { NewsSection } from '../../components/templates/NewsSection'
+import { Seo } from '../../components/ui/Seo'
+import { news } from '../../content'
 
 const variantStyles = {
   soft: {

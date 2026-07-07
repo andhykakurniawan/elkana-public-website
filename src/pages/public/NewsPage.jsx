@@ -1,8 +1,8 @@
-﻿import { ArrowRight, CalendarDays } from 'lucide-react'
+import { ArrowRight, CalendarDays } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { Shell } from '../components/layout/Shell'
-import { Seo } from '../components/ui/Seo'
-import { educationUnits, gallery, news } from '../content'
+import { Shell } from '../../components/layout/Shell'
+import { Seo } from '../../components/ui/Seo'
+import { educationUnits, gallery, news } from '../../content'
 
 export function NewsPage() {
   return (

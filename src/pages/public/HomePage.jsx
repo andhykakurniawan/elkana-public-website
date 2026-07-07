@@ -1,4 +1,4 @@
-﻿import {
+import {
   ArrowRight,
   BookOpen,
   Camera,
@@ -21,8 +21,8 @@
 } from 'lucide-react'
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { Seo } from '../components/ui/Seo'
-import { educationUnits, gallery, homeHero, news, school } from '../content'
+import { Seo } from '../../components/ui/Seo'
+import { educationUnits, gallery, homeHero, news, school } from '../../content'
 
 const unitConfig = {
   tk: {
@@ -78,12 +78,10 @@ function Navbar() {
   const [isUnitOpen, setIsUnitOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 border-b border-purple-100 bg-white/90 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-purple-100 bg-white shadow-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
         <Link to="/" className="flex items-center gap-3">
-          <div className="grid h-12 w-12 place-items-center rounded-xl border border-amber-200 bg-gradient-to-br from-amber-100 to-white text-lg font-black text-purple-900 shadow-sm">
-            E
-          </div>
+          <img src="/images/logo-elkana.png" alt={school.name} className="h-12 w-12 object-contain" />
           <div>
             <h1 className="font-heading text-2xl font-black leading-none tracking-tight text-purple-900">YPK ELKANA</h1>
             <p className="mt-1 text-xs font-medium text-slate-500">Yayasan Pendidikan Kristen</p>
@@ -359,7 +357,7 @@ function HomeFooter() {
     <footer id="kontak" className="bg-gradient-to-r from-purple-950 via-purple-900 to-violet-800 text-white">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-10 lg:grid-cols-[1.25fr_1.2fr_1fr_1fr_1.1fr] lg:px-8">
         <div>
-          <div className="flex items-center gap-3"><div className="grid h-12 w-12 place-items-center rounded-xl bg-white font-black text-purple-900">E</div><div><h2 className="text-2xl font-black">YPK ELKANA</h2><p className="text-xs text-purple-100">Yayasan Pendidikan Kristen</p></div></div>
+          <div className="flex items-center gap-3"><img src="/images/logo-elkana.png" alt={school.name} className="h-12 w-12 object-contain" /><div><h2 className="text-2xl font-black">YPK ELKANA</h2><p className="text-xs text-purple-100">Yayasan Pendidikan Kristen</p></div></div>
           <p className="mt-4 max-w-xs text-sm leading-6 text-purple-100">Melayani pendidikan dari hati, membentuk generasi beriman, berilmu, dan berkarakter.</p>
         </div>
         <div><h3 className="mb-4 font-black">Kontak Kami</h3><div className="space-y-3 text-sm text-purple-100"><p className="flex gap-3"><MapPin size={18} className="shrink-0" />{school.address}</p><p className="flex gap-3"><Phone size={18} />{school.phone}</p><p className="flex gap-3"><Mail size={18} />{school.email}</p></div></div>

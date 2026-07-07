@@ -1,9 +1,9 @@
 import { CalendarDays } from 'lucide-react'
-import { Shell } from '../components/layout/Shell'
-import { NewsSection } from '../components/sections/NewsSection'
-import { PageHero } from '../components/ui/PageHero'
-import { Seo } from '../components/ui/Seo'
-import { news } from '../content'
+import { Shell } from '../../components/layout/Shell'
+import { NewsSection } from '../../components/templates/NewsSection'
+import { PageHero } from '../../components/ui/PageHero'
+import { Seo } from '../../components/ui/Seo'
+import { news } from '../../content'
 
 export function UnitNewsPage({ unit }) {
   const unitNews = news.filter((item) => item.unit === unit.id)

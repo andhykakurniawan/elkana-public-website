@@ -1,8 +1,8 @@
-﻿import { ArrowRight, CheckCircle2, ClipboardList, Users } from 'lucide-react'
+import { ArrowRight, CheckCircle2, ClipboardList, Users } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { Shell } from '../components/layout/Shell'
-import { Seo } from '../components/ui/Seo'
-import { admissionsSteps, educationUnits, school } from '../content'
+import { Shell } from '../../components/layout/Shell'
+import { Seo } from '../../components/ui/Seo'
+import { admissionsSteps, educationUnits, school } from '../../content'
 
 export function AdmissionsPage() {
   return (

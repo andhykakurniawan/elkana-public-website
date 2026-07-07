@@ -21,31 +21,31 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-purple-100 bg-white/92 text-slate-800 shadow-sm backdrop-blur-xl">
-      <div className="container-wide flex h-[4.8rem] items-center justify-between px-5 sm:px-8 lg:px-12">
+    <header className="sticky top-0 z-50 border-b border-purple-100 bg-white text-slate-800 shadow-sm">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
         <Link to="/" className="focus-ring flex items-center gap-3 rounded-md" onClick={closeMenu}>
           <img src="/images/logo-elkana.png" alt={school.name} className="h-12 w-12 object-contain" />
           <span>
-            <span className="block font-heading text-2xl font-black leading-none tracking-normal text-purple-950">YPK ELKANA</span>
-            <span className="block text-xs font-semibold text-slate-500">Yayasan Pendidikan Kristen</span>
+            <span className="block font-heading text-2xl font-black leading-none tracking-tight text-purple-900">YPK ELKANA</span>
+            <span className="mt-1 block text-xs font-medium text-slate-500">Yayasan Pendidikan Kristen</span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 text-sm font-bold lg:flex" aria-label="Navigasi utama">
+        <nav className="hidden items-center gap-8 text-sm font-semibold text-slate-700 lg:flex" aria-label="Navigasi utama">
           <DesktopLink to="/">Beranda</DesktopLink>
           <DesktopLink to="/tentang">Tentang</DesktopLink>
 
           <div className="relative" onMouseEnter={() => setUnitOpen(true)} onMouseLeave={() => setUnitOpen(false)}>
             <button
               type="button"
-              className="focus-ring inline-flex items-center gap-1 rounded-md py-3 text-slate-700 transition hover:text-purple-800"
+              className="focus-ring inline-flex items-center gap-1 rounded-md py-3 text-slate-700 transition hover:text-purple-700"
               onClick={() => setUnitOpen((value) => !value)}
             >
               Unit Pendidikan <ChevronDown size={16} />
             </button>
             {unitOpen && (
               <div className="absolute left-0 top-full w-64 pt-2">
-                <div className="rounded-xl border border-purple-100 bg-white p-2 shadow-soft">
+                  <div className="rounded-xl border border-purple-100 bg-white p-2 shadow-xl">
                   {educationUnits.map((unit) => (
                     <Link
                       key={unit.id}
@@ -68,14 +68,14 @@ export function Header() {
 
         <Link
           to="/ppdb"
-          className="focus-ring hidden items-center gap-2 rounded-lg bg-gradient-to-r from-purple-900 to-violet-700 px-6 py-3 text-sm font-black text-white shadow-lg shadow-purple-200/60 transition hover:-translate-y-0.5 lg:inline-flex"
+          className="focus-ring hidden items-center gap-2 rounded-lg bg-gradient-to-r from-purple-800 to-violet-700 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-purple-300/40 transition hover:scale-[1.02] lg:inline-flex"
         >
           <Users size={17} /> Daftar PPDB
         </Link>
 
         <button
           type="button"
-          className="focus-ring grid h-11 w-11 place-items-center rounded-lg border border-purple-100 text-purple-900 lg:hidden"
+          className="focus-ring grid h-11 w-11 place-items-center rounded-xl border border-purple-100 text-purple-800 lg:hidden"
           aria-label="Buka navigasi"
           onClick={() => setIsOpen((value) => !value)}
         >
@@ -107,7 +107,7 @@ function DesktopLink({ to, children }) {
     <NavLink
       to={to}
       className={({ isActive }) =>
-        `focus-ring rounded-md py-2 transition ${isActive ? 'text-purple-900 underline decoration-purple-700 decoration-2 underline-offset-[14px]' : 'text-slate-700 hover:text-purple-800'}`
+        `focus-ring rounded-md py-2 transition ${isActive ? 'text-purple-800 underline decoration-purple-600 decoration-2 underline-offset-[14px]' : 'text-slate-700 hover:text-purple-700'}`
       }
     >
       {children}
