@@ -1,0 +1,8 @@
+export { admissionsSteps } from './admissions'
+export { gallery } from './gallery'
+export { navItems } from './navigation'
+export { news } from './news'
+export { homeHero, school, stats } from './schoolProfile'
+export { profileIntro, values, visionMission } from './visionMission'
+export { educationUnits, programs } from './units/index'
+export { teachers } from './teachers/teachers'
