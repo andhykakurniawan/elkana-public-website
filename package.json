@@ -9,17 +9,21 @@
     "preview": "vite preview --host 127.0.0.1"
   },
   "dependencies": {
+    "@directus/sdk": "^23.0.0",
+    "@hookform/resolvers": "^5.4.0",
     "@vitejs/plugin-react": "latest",
-    "vite": "latest",
+    "lucide-react": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "react-router-dom": "latest",
     "react-helmet-async": "latest",
-    "lucide-react": "latest"
+    "react-hook-form": "^7.82.0",
+    "react-router-dom": "latest",
+    "vite": "latest",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
-    "tailwindcss": "^3.4.17",
+    "autoprefixer": "latest",
     "postcss": "latest",
-    "autoprefixer": "latest"
+    "tailwindcss": "^3.4.17"
   }
 }

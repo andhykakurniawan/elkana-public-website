@@ -22,6 +22,7 @@ import {
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { Seo } from '../../components/ui/Seo'
+import { usePublicUnitContent } from '../../hooks/usePublicContent'
 import { gallery, news, school, unitsById } from '../../content'
 
 const tk = unitsById.tk
@@ -92,11 +93,13 @@ const tkNews = news.filter((item) => item.unit === 'tk')
 const fallbackNews = tkNews.length ? tkNews : news.slice(0, 4)
 
 export function TKHomePage() {
+  const { data: unit } = usePublicUnitContent('tk', tk)
+
   return (
     <main className="min-h-screen overflow-hidden bg-[#fbf8ff] text-slate-800">
-      <Seo title={tk.name} description={tk.intro} />
-      <Navbar />
-      <Hero />
+      <Seo title={unit.name} description={unit.intro} />
+      <Navbar unit={unit} />
+      <Hero unit={unit} />
       <FeatureStrip />
       <Programs />
       <ActivitiesAndTestimonial />
@@ -107,14 +110,14 @@ export function TKHomePage() {
   )
 }
 
-function Navbar() {
+function Navbar({ unit }) {
   return (
     <header className="sticky top-0 z-50 border-b border-purple-100 bg-white/90 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
         <Link to="/" className="flex items-center gap-3">
-          <img src="/images/logo-elkana.png" alt={tk.name} className="h-12 w-12 object-contain" />
+          <img src="/images/logo-elkana.png" alt={unit.name} className="h-12 w-12 object-contain" />
           <div>
-            <h1 className="font-heading text-2xl font-black tracking-tight text-purple-900">{tk.name}</h1>
+            <h1 className="font-heading text-2xl font-black tracking-tight text-purple-900">{unit.name}</h1>
             <p className="-mt-1 text-xs font-medium text-slate-500">Yayasan Pendidikan Kristen Elkana</p>
           </div>
         </Link>
@@ -142,10 +145,10 @@ function Navbar() {
   )
 }
 
-function Hero() {
+function Hero({ unit }) {
   return (
     <section id="beranda" className="relative min-h-[610px] overflow-hidden bg-white">
-      <img src={tk.heroImage} alt="Anak-anak TK Kristen Elkana belajar sambil bermain" className="absolute inset-0 h-full w-full object-cover object-center" />
+      <img src={unit.heroImage} alt="Anak-anak TK Kristen Elkana belajar sambil bermain" className="absolute inset-0 h-full w-full object-cover object-center" />
       <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/5" />
       <div className="absolute inset-y-0 left-0 w-1/2 bg-white/35 blur-3xl" />
       <Decorations />
@@ -161,7 +164,7 @@ function Hero() {
           </h2>
 
           <p className="mt-5 max-w-xl text-base font-medium leading-7 text-slate-600">
-            Di TK Kristen Elkana, setiap anak dikasihi, dihargai, dan dibimbing untuk bertumbuh sesuai dengan rencana Tuhan melalui pembelajaran yang menyenangkan dan penuh makna.
+            {unit.intro}
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">

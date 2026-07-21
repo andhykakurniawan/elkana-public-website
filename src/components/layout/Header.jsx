@@ -2,6 +2,7 @@
 import { ChevronDown, Menu, Users, X } from 'lucide-react'
 import { Link, NavLink } from 'react-router-dom'
 import { educationUnits, school } from '../../content'
+import { usePublicHomeContent } from '../../hooks/usePublicContent'
 
 const mainLinks = [
   { label: 'Beranda', path: '/' },
@@ -14,6 +15,9 @@ const mainLinks = [
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const [unitOpen, setUnitOpen] = useState(false)
+  const { data: content } = usePublicHomeContent()
+  const currentSchool = content.school || school
+  const currentUnits = content.educationUnits || educationUnits
 
   const closeMenu = () => {
     setIsOpen(false)
@@ -24,7 +28,7 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-purple-100 bg-white text-slate-800 shadow-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
         <Link to="/" className="focus-ring flex items-center gap-3 rounded-md" onClick={closeMenu}>
-          <img src="/images/logo-elkana.png" alt={school.name} className="h-12 w-12 object-contain" />
+          <img src="/images/logo-elkana.png" alt={currentSchool.name} className="h-12 w-12 object-contain" />
           <span>
             <span className="block font-heading text-2xl font-black leading-none tracking-tight text-purple-900">YPK ELKANA</span>
             <span className="mt-1 block text-xs font-medium text-slate-500">Yayasan Pendidikan Kristen</span>
@@ -46,7 +50,7 @@ export function Header() {
             {unitOpen && (
               <div className="absolute left-0 top-full w-64 pt-2">
                   <div className="rounded-xl border border-purple-100 bg-white p-2 shadow-xl">
-                  {educationUnits.map((unit) => (
+                  {currentUnits.map((unit) => (
                     <Link
                       key={unit.id}
                       to={unit.route}
@@ -91,7 +95,7 @@ export function Header() {
             ))}
             <div className="my-2 border-t border-purple-100 pt-3">
               <p className="px-4 text-xs font-black uppercase tracking-[0.16em] text-purple-400">Unit Pendidikan</p>
-              {educationUnits.map((unit) => (
+              {currentUnits.map((unit) => (
                 <MobileLink key={unit.id} to={unit.route} onClick={closeMenu}>{unit.name}</MobileLink>
               ))}
             </div>

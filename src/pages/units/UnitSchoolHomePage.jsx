@@ -25,6 +25,7 @@ import {
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { Seo } from '../../components/ui/Seo'
+import { usePublicUnitContent, usePublicUnitNewsContent } from '../../hooks/usePublicContent'
 import { gallery, school, unitsById } from '../../content'
 
 const configs = {
@@ -117,7 +118,16 @@ const configs = {
 }
 
 export function UnitSchoolHomePage({ type }) {
-  const config = configs[type]
+  const fallbackConfig = configs[type]
+  const { data: unit } = usePublicUnitContent(type, fallbackConfig.unit)
+  const { data: unitNews } = usePublicUnitNewsContent(type)
+  const config = {
+    ...fallbackConfig,
+    unit,
+    label: unit?.name?.toUpperCase() || fallbackConfig.label,
+    desc: unit?.intro || fallbackConfig.desc,
+    news: unitNews.length ? unitNews : fallbackConfig.news,
+  }
 
   return (
     <main className="min-h-screen bg-[#fbf9ff] text-slate-800">
@@ -282,9 +292,9 @@ function AchievementCard({ config }) {
       </div>
       <div className="mt-5 space-y-3">
         {config.news.map((item, index) => (
-          <article key={item} className="flex gap-3">
-            <img src={gallery[index % gallery.length].src} alt={item} className="h-16 w-24 rounded-xl object-cover" />
-            <div><h3 className="line-clamp-2 text-sm font-black leading-5 text-purple-950">{item}</h3><p className="mt-1 text-xs font-medium text-slate-500">2026</p></div>
+          <article key={getNewsKey(item, index)} className="flex gap-3">
+            <img src={getNewsImage(item, index)} alt={getNewsTitle(item)} className="h-16 w-24 rounded-xl object-cover" />
+            <div><h3 className="line-clamp-2 text-sm font-black leading-5 text-purple-950">{getNewsTitle(item)}</h3><p className="mt-1 text-xs font-medium text-slate-500">{getNewsDate(item)}</p></div>
           </article>
         ))}
       </div>
@@ -333,18 +343,36 @@ function News({ config }) {
       <h2 className="mb-4 text-2xl font-black text-purple-900">{config.newsTitle}</h2>
       <div className="grid gap-4 md:grid-cols-3">
         {config.news.map((item, index) => (
-          <article key={item} className="rounded-2xl border border-purple-100 bg-white p-4 shadow-sm">
+          <article key={getNewsKey(item, index)} className="rounded-2xl border border-purple-100 bg-white p-4 shadow-sm">
             <div className="mb-3 flex items-center gap-3">
               <div className="rounded-xl bg-purple-700 px-3 py-2 text-center text-white"><p className="text-2xl font-black leading-none">{String(index + 10).padStart(2, '0')}</p><p className="text-xs font-bold">Mei</p></div>
               <CalendarDays className="text-purple-300" size={24} />
             </div>
-            <h3 className="line-clamp-2 text-sm font-black leading-5 text-purple-950">{item}</h3>
+            <h3 className="line-clamp-2 text-sm font-black leading-5 text-purple-950">{getNewsTitle(item)}</h3>
             <a className="mt-3 inline-flex items-center gap-1 text-xs font-black text-purple-700">Selengkapnya <ArrowRight size={13} /></a>
           </article>
         ))}
       </div>
     </div>
   )
+}
+
+function getNewsTitle(item) {
+  return typeof item === 'string' ? item : item.title
+}
+
+function getNewsDate(item) {
+  return typeof item === 'string' ? '2026' : item.date
+}
+
+function getNewsImage(item, index) {
+  return typeof item === 'string'
+    ? gallery[index % gallery.length].src
+    : item.image || gallery[index % gallery.length]?.src || '/images/hero/yayasan-hero.png'
+}
+
+function getNewsKey(item, index) {
+  return typeof item === 'string' ? item : item.id || item.slug || `${item.title}-${index}`
 }
 
 function Testimonial({ config }) {

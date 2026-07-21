@@ -23,7 +23,7 @@ import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { AnthemSection } from '../../components/templates/AnthemSection'
 import { Seo } from '../../components/ui/Seo'
-import { educationUnits, gallery, homeHero, news, school } from '../../content'
+import { usePublicHomeContent } from '../../hooks/usePublicContent'
 
 const unitConfig = {
   tk: {
@@ -61,22 +61,24 @@ const advantages = [
 ]
 
 export function HomePage() {
+  const { data: content } = usePublicHomeContent()
+
   return (
     <main className="min-h-screen bg-[#fbf9ff] text-slate-800">
       <Seo description="Profil resmi YPK Elkana: yayasan, unit TK, SD, SMP, berita, PPDB, dan kontak." />
-      <Navbar />
-      <Hero />
-      <EducationUnits />
-      <ValuesAndNews />
-      <GalleryAndTestimonial />
+      <Navbar educationUnits={content.educationUnits} school={content.school} />
+      <Hero homeHero={content.homeHero} school={content.school} />
+      <EducationUnits educationUnits={content.educationUnits} />
+      <ValuesAndNews news={content.news} gallery={content.gallery} />
+      <GalleryAndTestimonial gallery={content.gallery} homeHero={content.homeHero} />
       <AnthemSection />
       <PPDBBanner />
-      <HomeFooter />
+      <HomeFooter school={content.school} />
     </main>
   )
 }
 
-function Navbar() {
+function Navbar({ educationUnits, school }) {
   const [isUnitOpen, setIsUnitOpen] = useState(false)
 
   return (
@@ -142,7 +144,7 @@ function Navbar() {
 const activeNavClass = 'text-purple-800 underline decoration-purple-600 decoration-2 underline-offset-[14px]'
 const idleNavClass = 'hover:text-purple-700'
 
-function Hero() {
+function Hero({ homeHero, school }) {
   return (
     <section className="relative min-h-[620px] overflow-hidden bg-white">
       <img src={homeHero.image} alt="Gerbang YPK Elkana" className="absolute inset-0 h-full w-full object-cover object-center" />
@@ -191,7 +193,7 @@ function MiniStat({ icon: Icon, value, label }) {
   )
 }
 
-function EducationUnits() {
+function EducationUnits({ educationUnits }) {
   return (
     <section id="unit" className="relative z-20 mx-auto max-w-7xl px-5 py-8 lg:px-8">
       <h2 className="mb-5 text-2xl font-black text-purple-900">Unit Pendidikan Kami</h2>
@@ -223,7 +225,7 @@ function EducationUnits() {
   )
 }
 
-function ValuesAndNews() {
+function ValuesAndNews({ news, gallery }) {
   return (
     <section className="mx-auto grid max-w-7xl gap-6 px-5 py-6 lg:grid-cols-[1.15fr_1fr_0.9fr] lg:px-8">
       <div>
@@ -265,7 +267,7 @@ function ValuesAndNews() {
         <div className="space-y-3">
           {news.slice(0, 3).map((item, index) => (
             <article key={item.title} className="flex gap-3">
-              <img src={gallery[index % gallery.length].src} alt={item.title} className="h-20 w-28 rounded-xl object-cover" />
+              <img src={(gallery[index % gallery.length]?.src) || item.image || '/images/hero/yayasan-hero.png'} alt={item.title} className="h-20 w-28 rounded-xl object-cover" />
               <div>
                 <h3 className="line-clamp-2 text-sm font-black leading-5 text-purple-950">{item.title}</h3>
                 <p className="mt-1 text-xs font-medium text-slate-500">{item.date}</p>
@@ -278,7 +280,7 @@ function ValuesAndNews() {
   )
 }
 
-function GalleryAndTestimonial() {
+function GalleryAndTestimonial({ gallery, homeHero }) {
   return (
     <section className="mx-auto grid max-w-7xl gap-8 rounded-2xl bg-white px-5 py-6 shadow-sm lg:grid-cols-[1.25fr_1fr] lg:px-8">
       <div>
@@ -332,7 +334,7 @@ function PPDBBanner() {
   )
 }
 
-function HomeFooter() {
+function HomeFooter({ school }) {
   return (
     <footer id="kontak" className="bg-gradient-to-r from-purple-950 via-purple-900 to-violet-800 text-white">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-10 lg:grid-cols-[1.25fr_1.2fr_1fr_1fr_1.1fr] lg:px-8">
@@ -349,4 +351,3 @@ function HomeFooter() {
     </footer>
   )
 }
-

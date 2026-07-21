@@ -1,0 +1,48 @@
+services:
+  database:
+    image: postgres:16-alpine
+    container_name: elkana-directus-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-elkana_directus}
+      POSTGRES_USER: ${POSTGRES_USER:-elkana_directus}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-elkana_directus_password}
+    volumes:
+      - directus_database:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-elkana_directus} -d ${POSTGRES_DB:-elkana_directus}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  directus:
+    image: directus/directus:11
+    container_name: elkana-directus
+    restart: unless-stopped
+    ports:
+      - "8055:8055"
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      KEY: ${DIRECTUS_KEY:-elkana-local-key-change-me}
+      SECRET: ${DIRECTUS_SECRET:-elkana-local-secret-change-me}
+      ADMIN_EMAIL: ${DIRECTUS_ADMIN_EMAIL:-admin@ypkelkana.sch.id}
+      ADMIN_PASSWORD: ${DIRECTUS_ADMIN_PASSWORD:-admin123456}
+      DB_CLIENT: pg
+      DB_HOST: database
+      DB_PORT: 5432
+      DB_DATABASE: ${POSTGRES_DB:-elkana_directus}
+      DB_USER: ${POSTGRES_USER:-elkana_directus}
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-elkana_directus_password}
+      PUBLIC_URL: http://127.0.0.1:8055
+      CORS_ENABLED: "true"
+      CORS_ORIGIN: "true"
+    volumes:
+      - directus_uploads:/directus/uploads
+      - directus_extensions:/directus/extensions
+
+volumes:
+  directus_database:
+  directus_uploads:
+  directus_extensions:

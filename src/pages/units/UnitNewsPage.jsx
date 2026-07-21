@@ -3,10 +3,10 @@ import { Shell } from '../../components/layout/Shell'
 import { NewsSection } from '../../components/templates/NewsSection'
 import { PageHero } from '../../components/ui/PageHero'
 import { Seo } from '../../components/ui/Seo'
-import { news } from '../../content'
+import { usePublicUnitNewsContent } from '../../hooks/usePublicContent'
 
 export function UnitNewsPage({ unit }) {
-  const unitNews = news.filter((item) => item.unit === unit.id)
+  const { data: unitNews } = usePublicUnitNewsContent(unit.id)
 
   return (
     <Shell>
